@@ -10,10 +10,10 @@ function PostCard(post: Post) {
           {post.title}
         </Link>
       </h2>
-      <time dateTime={post.date} className="mb-2 block text-xs text-gray-600">
+      <p className="mb-1">{post.description}</p>
+      <time dateTime={post.date} className="block text-xs text-gray-600 [&>*:last-child]:mb-0 [&>*]:mb-3">
         {format(parseISO(post.date), 'LLLL d, yyyy')}
       </time>
-      <div className="text-sm [&>*:last-child]:mb-0 [&>*]:mb-3" dangerouslySetInnerHTML={{ __html: post.body.html }} />
     </div>
   );
 }
@@ -24,8 +24,8 @@ export default function Home() {
   return (
     <div className="mx-auto max-w-xl py-8">
       <h1 className="mb-8 text-center text-2xl font-black">Next.js + Contentlayer Example</h1>
-      {posts.map((post, idx) => (
-        <PostCard key={idx} {...post} />
+      {posts.map((post) => (
+        <PostCard key={post._id} {...post} />
       ))}
     </div>
   );

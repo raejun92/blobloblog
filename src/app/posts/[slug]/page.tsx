@@ -1,17 +1,37 @@
 import { allPosts } from 'contentlayer/generated';
 import { format, parseISO } from 'date-fns';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
-export const generateStaticParams = async () => allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
+interface PostProps {
+  params: {
+    slug: string;
+  };
+}
 
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
-  if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
-  return { title: post.title };
+export const generateStaticParams = async () => allPosts.map((post) => ({ slug: post.slug }));
+
+export const generateMetadata = async ({ params }: PostProps): Promise<Metadata> => {
+  const post = await getPost(params);
+
+  if (!post) return {};
+
+  return { title: post.title, description: post.description };
 };
 
-const PostLayout = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
-  if (!post) throw new Error(`Post not found for slug: ${params.slug}`);
+async function getPost(params: PostProps['params']) {
+  const slug = params?.slug;
+  const post = allPosts.find((post) => post.slug === slug);
+
+  if (!post) null;
+
+  return post;
+}
+
+const PostLayout = async ({ params }: PostProps) => {
+  const post = await getPost(params);
+
+  if (!post) notFound();
 
   return (
     <article className="mx-auto max-w-xl py-8">
