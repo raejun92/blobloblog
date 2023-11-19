@@ -6,7 +6,10 @@ function PostCard(post: Post) {
   return (
     <div className="mb-8">
       <h2 className="mb-1 text-xl">
-        <Link href={post.url} className="text-blue-700 hover:text-blue-900 dark:text-blue-400">
+        <Link
+          href={post.url}
+          className="text-gray-800 hover:text-gray-900 dark:text-violet-700 dark:hover:text-violet-950"
+        >
           {post.title}
         </Link>
       </h2>
@@ -23,7 +26,7 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-xl py-8">
-      <h1 className="mb-8 text-center text-2xl font-black">Next.js + Contentlayer Example</h1>
+      <h1 className="mb-8 text-center text-2xl font-black">Bla Bla Blog</h1>
       {posts.map((post) => (
         <PostCard key={post._id} {...post} />
       ))}
