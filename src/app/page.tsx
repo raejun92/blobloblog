@@ -8,7 +8,7 @@ function PostCard(post: Post) {
       <h2 className="mb-1 text-xl">
         <Link
           href={post.url}
-          className="text-gray-800 hover:text-gray-900 dark:text-violet-700 dark:hover:text-violet-950"
+          className="text-gray-800 hover:text-gray-900 dark:text-violet-700 dark:hover:text-violet-400"
         >
           {post.title}
         </Link>
@@ -26,7 +26,7 @@ export default function Home() {
 
   return (
     <div className="mx-auto max-w-xl py-8">
-      <h1 className="mb-8 text-center text-2xl font-black">Bla Bla Blog</h1>
+      <h1 className="mb-8 text-center text-2xl font-black">Blo Blo Blog</h1>
       {posts.map((post) => (
         <PostCard key={post._id} {...post} />
       ))}
