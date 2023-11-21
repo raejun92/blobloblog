@@ -2,6 +2,7 @@ import { allPosts } from 'contentlayer/generated';
 import { format, parseISO } from 'date-fns';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { Mdx } from 'ui/mdx-components';
 
 interface PostProps {
   params: {
@@ -34,14 +35,14 @@ const PostLayout = async ({ params }: PostProps) => {
   if (!post) notFound();
 
   return (
-    <article className="mx-auto max-w-xl py-8">
+    <article className="prose mx-auto max-w-xl py-8 dark:prose-invert">
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold">{post.title}</h1>
-        <time dateTime={post.date} className="mb-1 text-xs text-gray-600">
+        <h1>{post.title}</h1>
+        <time dateTime={post.date} className="mb-1 text-xs text-gray-500">
           {format(parseISO(post.date), 'LLLL d, yyyy')}
         </time>
       </div>
-      <div className="[&>*:last-child]:mb-0 [&>*]:mb-3" dangerouslySetInnerHTML={{ __html: post.body.html }} />
+      <Mdx code={post.body.code} />
     </article>
   );
 };
