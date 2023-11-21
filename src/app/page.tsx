@@ -5,10 +5,10 @@ import Link from 'next/link';
 function PostCard(post: Post) {
   return (
     <div className="mb-8">
-      <h2 className="mb-1 text-xl">
+      <h2 className="mb-1">
         <Link
           href={post.url}
-          className="text-gray-800 hover:text-gray-900 dark:text-violet-700 dark:hover:text-violet-400"
+          className="text-gray-800 no-underline hover:text-gray-900 dark:text-violet-700 dark:hover:text-violet-400"
         >
           {post.title}
         </Link>
@@ -25,8 +25,8 @@ export default function Home() {
   const posts = allPosts.sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   return (
-    <div className="mx-auto max-w-xl py-8">
-      <h1 className="mb-8 text-center text-2xl font-black">Blo Blo Blog</h1>
+    <div className="prose mx-auto max-w-xl py-8 dark:prose-invert">
+      <h1 className="mb-8 text-center font-black">Blo Blo Blog</h1>
       {posts.map((post) => (
         <PostCard key={post._id} {...post} />
       ))}
