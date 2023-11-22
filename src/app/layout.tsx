@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { ThemeProvider } from 'provider/theme-provider';
-import { ModeToggle } from 'ui/mode-toggle';
+import ThemeToggle from 'ui/theme-toggle';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header>
             <div className="mx-auto mt-2 flex max-w-xl items-center justify-between">
               <Link href="/">Home</Link>
-              <ModeToggle />
+              <ThemeToggle />
             </div>
           </header>
           {children}
