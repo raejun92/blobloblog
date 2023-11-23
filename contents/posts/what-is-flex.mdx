@@ -1,0 +1,49 @@
+---
+title: flex
+description: css
+date: 2023-11-23
+---
+
+### flex 사용법
+
+> flex: flex-grow, flex-shrink, flex-basis
+
+- flex-grow: 기본 크기 할당 후 남은 공간을 상대적으로 정의한다.(확장)
+
+  <div className="flex items-center justify-center gap-4">
+    <Image src="/flex-grow0.png" width="500" height="100" alt="flex-grow-0" />
+    <p>flex-grow: 0</p>
+  </div>
+
+  <div className="flex items-center justify-center gap-4">
+    <Image src="/flex-grow1.png" width="500" height="100" alt="flex-grow-1" />
+    <p>flex-grow: 1</p>
+  </div>
+
+- flex-shrink: 기본 크기보다 부모의 크기가 작아질 경우 초과 공간을 정의한다.(축소)
+
+<div className="flex items-center justify-center gap-4">
+  <Image src="/flex-shrink0.png" width="500" height="100" alt="flex-shrink-1" />
+  <p>flex-shrink: 0</p>
+</div>
+
+<div className="flex items-center justify-center gap-4">
+  <Image src="/flex-shrink1.png" width="500" height="100" alt="flex-shrink-1" />
+  <p>flex-shrink: 1</p>
+</div>
+
+- flex-basis: 기본 크기를 설정한다. 기본값은 `auto`이다.
+
+### 많이 사용하는 예시
+
+wrap 안에 item이 있는 상황
+
+```css
+.wrap {
+  display: flex;
+}
+
+.item {
+  flex: 1 1 auto;
+}
+```
