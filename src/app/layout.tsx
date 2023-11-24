@@ -15,7 +15,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body
+        className={`min-h-screen bg-white text-slate-900 antialiased duration-500 dark:bg-slate-950 dark:text-slate-50 ${inter.className}`}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <header>
             <div className="mx-auto mt-2 flex max-w-xl items-center justify-between">
