@@ -1,10 +1,11 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { ThemeProvider } from 'provider/theme-provider';
-import ThemeToggle from 'ui/theme-toggle';
 
+const ThemeToggle = dynamic(() => import('@/ui/theme-toggle'), { ssr: false });
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
