@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <header>
-            <div className="mx-auto mt-2 flex max-w-xl items-center justify-between">
+            <div className="mx-auto flex max-w-xl items-center justify-between pt-2">
               <Link href="/">Home</Link>
               <ThemeToggle />
             </div>
