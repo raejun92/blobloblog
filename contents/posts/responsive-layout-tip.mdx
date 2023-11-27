@@ -1,0 +1,262 @@
+---
+title: 반응형 레이아웃 팁이요~
+description: css
+date: 2023-11-27
+---
+
+### cluster
+
+흔하게 사용하는 방법으로 flex-wrap으로 하위 요소를 상위 요소에 가둔다.
+
+<div style={{ outline: '5px solid hotpink', padding: '1rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Lorem</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Illum</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Minima</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Blanditiis</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Assumenda</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Enim</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Ullam</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Dignissimos</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Ab</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Quasi</div>
+</div>
+
+```html
+<div class="cluster">
+  <div class="child">Lorem</div>
+  <div class="child">Illum</div>
+  <div class="child">Minima</div>
+  <div class="child">Blanditiis</div>
+  <div class="child">Assumenda</div>
+  <div class="child">Enim</div>
+  <div class="child">Ullam</div>
+  <div class="child">Dignissimos</div>
+  <div class="child">Ab</div>
+  <div class="child">Quasi</div>
+</div>
+```
+
+```css
+.cluster {
+  outline: 5px solid hotpink;
+  padding: 1rem;
+
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.child {
+  border: 3px solid hsl(230, 75%, 75%);
+  padding: 0.5rem;
+  background: hsl(230, 75%, 25%);
+}
+```
+
+---
+
+### flexible-grid
+
+cluster와 유사하지만, 남은 공간을 요소가 나누어 갖는다.
+
+<div style={{ outline: '5px solid hotpink', padding: '1rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', flex: 1 }}>Lorem</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', flex: 1 }}>Illum</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', flex: 1 }}>Minima</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', flex: 1 }}>Blanditiis</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', flex: 1 }}>Assumenda</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', flex: 1 }}>Enim</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', flex: 1 }}>Ullam</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', flex: 1 }}>Dignissimos</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', flex: 1 }}>Ab</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', flex: 1 }}>Quasi</div>
+</div>
+
+```html
+<div class="flexible-grid">
+  <div class="child">Lorem</div>
+  <div class="child">Illum</div>
+  <div class="child">Minima</div>
+  <div class="child">Blanditiis</div>
+  <div class="child">Assumenda</div>
+  <div class="child">Enim</div>
+  <div class="child">Ullam</div>
+  <div class="child">Dignissimos</div>
+  <div class="child">Ab</div>
+  <div class="child">Quasi</div>
+</div>
+```
+
+```css
+.flexible-grid {
+  outline: 5px solid hotpink;
+  padding: 1rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.flexible-grid > * {
+  flex: 1;
+}
+
+.child {
+  border: 3px solid hsl(230, 75%, 75%);
+  padding: 0.5rem;
+  background: hsl(230, 75%, 25%);
+}
+```
+
+---
+
+### auto-grid
+
+하위 요소가 상위 요소 밖으로 나가지 못하게 한다.
+
+<div
+  style={{
+    outline: '5px solid hotpink',
+    padding: '1rem',
+    display: 'grid',
+    gap: '1rem',
+    flexWrap: 'wrap',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(min(10rem, 100%), 1fr))',
+  }}
+>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Lorem</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Illum</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Minima</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Blanditiis</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Assumenda</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Enim</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Ullam</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Dignissimos</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Ab</div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f' }}>Quasi</div>
+</div>
+
+```html
+<div class="auto-grid">
+  <div class="child">Lorem</div>
+  <div class="child">Illum</div>
+  <div class="child">Minima</div>
+  <div class="child">Blanditiis</div>
+  <div class="child">Assumenda</div>
+  <div class="child">Enim</div>
+  <div class="child">Ullam</div>
+  <div class="child">Dignissimos</div>
+  <div class="child">Ab</div>
+  <div class="child">Quasi</div>
+</div>
+```
+
+```css
+.auto-grid {
+  outline: 5px solid hotpink;
+  padding: 1rem;
+
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
+}
+
+.child {
+  border: 3px solid hsl(230, 75%, 75%);
+  padding: 0.5rem;
+  background: hsl(230, 75%, 25%);
+}
+```
+
+---
+
+### reel
+
+<div
+  style={{
+    outline: '5px solid hotpink',
+    padding: '1rem',
+    display: 'grid',
+    gap: '1rem',
+    gridAutoFlow: 'column',
+    gridAutoColumns: '45%',
+    overflowX: 'scroll',
+    scrollSnapType: 'x mandatory',
+    scrollPadding: '1rem',
+  }}
+>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', scrollSnapAlign: 'start' }}>
+    Lorem
+  </div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', scrollSnapAlign: 'start' }}>
+    Illum
+  </div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', scrollSnapAlign: 'start' }}>
+    Minima
+  </div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', scrollSnapAlign: 'start' }}>
+    Blanditiis
+  </div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', scrollSnapAlign: 'start' }}>
+    Assumenda
+  </div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', scrollSnapAlign: 'start' }}>
+    Enim
+  </div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', scrollSnapAlign: 'start' }}>
+    Ullam
+  </div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', scrollSnapAlign: 'start' }}>
+    Dignissimos
+  </div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', scrollSnapAlign: 'start' }}>
+    Ab
+  </div>
+  <div style={{ border: '3px solid #8f9fef', padding: '0.5rem', background: '#0f1f6f', scrollSnapAlign: 'start' }}>
+    Quasi
+  </div>
+</div>
+
+```html
+<div class="reel">
+  <div class="child">Lorem</div>
+  <div class="child">Illum</div>
+  <div class="child">Minima</div>
+  <div class="child">Blanditiis</div>
+  <div class="child">Assumenda</div>
+  <div class="child">Enim</div>
+  <div class="child">Ullam</div>
+  <div class="child">Dignissimos</div>
+  <div class="child">Ab</div>
+  <div class="child">Quasi</div>
+</div>
+```
+
+```css
+.reel {
+  outline: 5px solid hotpink;
+  padding: 1rem;
+
+  display: grid;
+  gap: 1rem;
+  grid-auto-flow: column;
+  grid-auto-columns: 45%;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+}
+
+.reel > * {
+  scroll-snap-align: start;
+}
+
+.child {
+  border: 3px solid hsl(230, 75%, 75%);
+  padding: 0.5rem;
+  background: hsl(230, 75%, 25%);
+}
+```
+
+---
+
+[lecture](https://youtu.be/p3_xN2Zp1TY?si=vEkicYHXij-3Oyeu)
