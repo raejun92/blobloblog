@@ -22,15 +22,8 @@ const ProgressBar = () => {
 
   return (
     <div
-      style={{
-        height: `${height}%`,
-        position: 'fixed',
-        right: 0,
-        top: 0,
-        zIndex: 10,
-        backgroundColor: theme === 'light' ? 'black' : 'white',
-        width: '8px',
-      }}
+      className={`fixed right-0 top-0 z-10 w-2 ${theme === 'light' ? 'bg-black' : 'bg-white'}`}
+      style={{ height: `${height}%` }}
     ></div>
   );
 };
