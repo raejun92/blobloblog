@@ -4,7 +4,14 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 const ProgressBar = () => {
-  const [height, setHeight] = useState(0);
+  const [height, setHeight] = useState(() => {
+    const element = document.documentElement;
+    const scrollTop = element.scrollTop;
+    const scrollHeight = element.scrollHeight;
+    const percent = (scrollTop / (scrollHeight - element.clientHeight)) * 100;
+
+    return percent;
+  });
 
   const handleScrollHeight = () => {
     const element = document.documentElement;
