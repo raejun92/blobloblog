@@ -1,23 +1,15 @@
 'use client';
 
+import { useTheme } from 'next-themes';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
 const ProgressBar = () => {
-  const [height, setHeight] = useState(() => {
-    const element = document.documentElement;
-    const scrollTop = element.scrollTop;
-    const scrollHeight = element.scrollHeight;
-    const percent = (scrollTop / (scrollHeight - element.clientHeight)) * 100;
-
-    return percent;
-  });
+  const { theme } = useTheme();
+  const [height, setHeight] = useState(() => getScrollYPercent());
 
   const handleScrollHeight = () => {
-    const element = document.documentElement;
-    const scrollTop = element.scrollTop;
-    const scrollHeight = element.scrollHeight;
-    const percent = (scrollTop / (scrollHeight - element.clientHeight)) * 100;
+    const percent = getScrollYPercent();
 
     setHeight(percent);
   };
@@ -36,11 +28,20 @@ const ProgressBar = () => {
         right: 0,
         top: 0,
         zIndex: 10,
-        backgroundColor: 'white',
+        backgroundColor: theme === 'light' ? 'black' : 'white',
         width: '8px',
       }}
     ></div>
   );
 };
+
+function getScrollYPercent() {
+  const element = document.documentElement;
+  const scrollTop = element.scrollTop;
+  const scrollHeight = element.scrollHeight;
+  const percent = (scrollTop / (scrollHeight - element.clientHeight)) * 100;
+
+  return percent;
+}
 
 export default ProgressBar;
