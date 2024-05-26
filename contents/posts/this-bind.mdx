@@ -4,11 +4,9 @@ description: javascript
 date: 2024-05-22
 ---
 
-### bind 하는 이유가 뭘까?!
-
 - 우연히 다음과 같은 코드를 github에서 보게 되었다
 
-```ts
+```ts showLineNumbers {25-33}
 interface HTTPInstance {
   get<T>(url: string, config?: RequestInit): Promise<T>;
   delete<T>(url: string, config?: RequestInit): Promise<T>;
@@ -101,6 +99,8 @@ class Service {
 
 export default Service;
 ```
+
+### bind 하는 이유가 뭘까?!
 
 - 느낌상 http 호출을 위한 클래스라 짐작
 - constructor의 http에서 bind 부분이 이해되지 않음
