@@ -1,11 +1,8 @@
 'use client';
 
-import { useTheme } from 'next-themes';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const ProgressBar = () => {
-  const { theme } = useTheme();
   const [height, setHeight] = useState(() => getScrollYPercent());
 
   const handleScrollHeight = () => {
@@ -21,10 +18,7 @@ const ProgressBar = () => {
   }, []);
 
   return (
-    <div
-      className={`fixed right-0 top-0 z-10 w-2 ${theme === 'light' ? 'bg-black' : 'bg-white'}`}
-      style={{ height: `${height}%` }}
-    ></div>
+    <div className="fixed right-0 top-0 z-10 w-2 bg-zinc-500 dark:bg-gray-400" style={{ height: `${height}%` }}></div>
   );
 };
 

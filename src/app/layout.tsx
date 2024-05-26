@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body
-        className={`min-h-screen bg-white text-slate-900 antialiased duration-500 dark:bg-slate-950 dark:text-slate-50 ${inter.className}`}
+        className={`min-h-screen bg-zinc-200 text-slate-900 antialiased duration-500 dark:bg-slate-950 dark:text-slate-50 ${inter.className}`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ProgressBar />
