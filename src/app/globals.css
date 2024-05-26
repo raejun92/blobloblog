@@ -9,7 +9,7 @@ body::-webkit-scrollbar {
 
 /* 파이어폭스 스크롤 삭제 */
 body {
-  scrollbar-width: none;
+  scrollbar-width: auto;
 }
 
 /* Fenced Code block - line style */
