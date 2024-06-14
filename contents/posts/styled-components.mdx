@@ -1,0 +1,23 @@
+---
+title: styled-components에 문제가 있다는데요?
+description: css
+date: 2024-06-14
+---
+
+### styled-components
+
+- styled-components는 CSS-in-JS 라이브러리이며, 자바스크립트에 스타일을 직접 작성한다.
+- styled-components를 사용하면 스타일을 컴포넌트화하여 관리할 수 있으며, 동적 스타일링과 테마 설정이 간편해진다.
+
+### styled-components 는 성능 이슈가 존재 한다는데?
+
+styled-components는 템플릿 리터럴을 사용해 스타일을 작성하여 고유한 클래스로 이름을 변환한다.
+변환된 스타일은 자바스크립트 런타임에 style 태그로 동적으로 DOM에 삽입된다.
+동적으로 계속해서 변하는 값이 있다면(예를 들어 color picker) 값이 변할 때마다 새로운 고유 클래스가 변환되고 이를 동적으로 DOM에 삽입할 것이다.
+DOM의 계속된 변화는 브라우저에 부담을 줘 성능 이슈가 발생하게 된다.
+
+### 성능 이슈 해결 방법
+
+styled-components는 성능 이슈로 인해 사용해야 할지 고민이 될 수 있다.
+이에 styled-components는 attrs를 제공한다.(<a href="https://styled-components.com/docs/faqs#when-to-use-attrs" target='\_blank'>공식 문서</a>)
+또한, 동적으로 계속 변하는 속성만 따로 인라인 스타일로 지정해서 해결할 수 있다.
