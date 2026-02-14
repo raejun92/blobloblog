@@ -1,36 +1,29 @@
-import { allPosts } from 'contentlayer/generated';
+import { allPosts } from 'contentlayer2/generated';
 import { format, parseISO } from 'date-fns';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Mdx } from 'ui/mdx-components';
 
 interface PostProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export const generateStaticParams = async () => allPosts.map((post) => ({ slug: post.slug }));
 
 export const generateMetadata = async ({ params }: PostProps): Promise<Metadata> => {
-  const post = await getPost(params);
+  const { slug } = await params;
+  const post = allPosts.find((post) => post.slug === slug);
 
   if (!post) return {};
 
   return { title: post.title, description: post.description };
 };
 
-async function getPost(params: PostProps['params']) {
-  const slug = params?.slug;
-  const post = allPosts.find((post) => post.slug === slug);
-
-  if (!post) null;
-
-  return post;
-}
-
 const PostLayout = async ({ params }: PostProps) => {
-  const post = await getPost(params);
+  const { slug } = await params;
+  const post = allPosts.find((post) => post.slug === slug);
 
   if (!post) notFound();
 

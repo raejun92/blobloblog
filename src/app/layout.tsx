@@ -1,12 +1,10 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { ThemeProvider } from 'provider/theme-provider';
-
-const ThemeToggle = dynamic(() => import('@/ui/theme-toggle'), { ssr: false });
-const ProgressBar = dynamic(() => import('@/ui/progress-bar'), { ssr: false });
+import ThemeToggle from '@/ui/theme-toggle';
+import ProgressBar from '@/ui/progress-bar';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {

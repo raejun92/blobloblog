@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 const ProgressBar = () => {
-  const [height, setHeight] = useState(() => getScrollYPercent());
+  const [height, setHeight] = useState(0);
 
   const handleScrollHeight = () => {
     const percent = getScrollYPercent();
