@@ -18,7 +18,7 @@ const ProgressBar = () => {
   }, []);
 
   return (
-    <div className="fixed right-0 top-0 z-10 w-2 bg-zinc-500 dark:bg-gray-400" style={{ height: `${height}%` }}></div>
+    <div className="fixed right-0 top-0 z-20 w-1 bg-zinc-500 dark:bg-gray-400" style={{ height: `${height}%` }}></div>
   );
 };
 

@@ -3,6 +3,7 @@ import { format, parseISO } from 'date-fns';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Mdx } from 'ui/mdx-components';
+import { PostLayoutWrapper } from '@/ui/post-layout-wrapper';
 
 interface PostProps {
   params: Promise<{
@@ -28,15 +29,17 @@ const PostLayout = async ({ params }: PostProps) => {
   if (!post) notFound();
 
   return (
-    <article className="prose mx-auto max-w-xl py-8 dark:prose-invert">
-      <div className="mb-8 text-center">
-        <h1>{post.title}</h1>
-        <time dateTime={post.date} className="mb-1 text-xs text-gray-500">
-          {format(parseISO(post.date), 'LLLL d, yyyy')}
-        </time>
-      </div>
-      <Mdx code={post.body.code} />
-    </article>
+    <PostLayoutWrapper>
+      <article className="prose py-8 dark:prose-invert">
+        <div className="mb-8 text-center">
+          <h1>{post.title}</h1>
+          <time dateTime={post.date} className="mb-1 text-xs text-gray-500">
+            {format(parseISO(post.date), 'LLLL d, yyyy')}
+          </time>
+        </div>
+        <Mdx code={post.body.code} />
+      </article>
+    </PostLayoutWrapper>
   );
 };
 

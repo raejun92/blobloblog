@@ -42,3 +42,29 @@ body {
 [data-highlighted-line] {
   background-color: #b3c0de40;
 }
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll margin for headings (accounts for any fixed header) */
+.prose h2,
+.prose h3,
+.prose h4 {
+  scroll-margin-top: 5rem;
+}
+
+/* TOC scrollbar styling */
+nav[aria-label='Table of contents']::-webkit-scrollbar {
+  width: 4px;
+}
+
+nav[aria-label='Table of contents']::-webkit-scrollbar-thumb {
+  background-color: rgb(148 163 184 / 0.3);
+  border-radius: 2px;
+}
+
+nav[aria-label='Table of contents']::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(148 163 184 / 0.5);
+}
